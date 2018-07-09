@@ -1,44 +1,1 @@
-<!doctype html>
-<!-- peytongregory.com -->
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" <?php language_attributes(); ?>> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
-<head>
-
-    <!--=== META TAGS ===-->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta charset="<?php bloginfo( 'charset' ); ?>" />
-    <meta name="description" content="Keywords">
-    <meta name="author" content="Name">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!--=== LINK TAGS ===-->
-    <link rel="shortcut icon" href="<?php echo THEME_DIR; ?>/imgs/favicon.ico" />
-    <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS2 Feed" href="<?php bloginfo('rss2_url'); ?>" />
-    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-    <link rel="profile" href="http://gmpg.org/xfn/11">
-    <!--=== TITLE ===-->
-    <title><?php wp_title(); ?> - <?php bloginfo( 'name' ); ?></title>
-
-    <!--=== WP_HEAD() ===-->
-    <?php wp_head(); ?>
-
-</head>
-<?php flush(); ?>
-<body <?php body_class(); ?>>
-<div class="site-wrapper">
-<header class="site-header">
-
-</header>
-<nav class="site-navigation">
-
-<?php
-$args = array(
-    'menu_class' => 'menu',
-    'container' => 'ul',
-    'menu' => 'Header Menu'
-);
-wp_nav_menu( $args );
-?>
-</div>
+<!doctype html><html class="no-js" <?php language_attributes(); ?>><head>    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    <meta charset="<?php bloginfo( 'charset' ); ?>" />    <meta name="description" content="Keywords">    <meta name="author" content="Name">    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">    <link rel="shortcut icon" href="<?php echo THEME_DIR; ?>/imgs/favicon.ico" />    <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS2 Feed" href="<?php bloginfo('rss2_url'); ?>" />    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />    <link rel="profile" href="http://gmpg.org/xfn/11">    <title><?php wp_title(); ?> - <?php bloginfo( 'name' ); ?></title>    <?php wp_head(); ?></head><body <?php body_class(); ?>><div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>	<button class="close-button" aria-label="Close menu" type="button" data-close>	  <span aria-hidden="true">&times;</span>	</button>	<?php 		wp_nav_menu(array(		'container'       => 'nav',		'container_class' => 'site-navigation mobile-nav',		'menu_id'         => 'mobile-menu',		'depth'           => 2,		'container' => false,		'menu' => 'Header Menu',		'menu_class' => 'dropdown menu',		'theme_location' => 'header-menu',		'items_wrap'      => '<ul id="%1$s" class="%2$s vertical menu drilldown" data-drilldown>%3$s</ul>',		//Recommend setting this to false, but if you need a fallback...		'fallback_cb' => 'f6_topbar_menu_fallback',		'walker' => new F6_DRILL_MENU_WALKER(),	)); ?>              </div><div class="off-canvas-content" data-off-canvas-content id="site-wrapper">	<header class="site-header" id="site-header">		<div class="grid-container">			<a class="site-logo-link show-for-large" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php get_bloginfo('name'); ?>">				<img alt="Puritan Cleaners - Free Home Delivery!" class="site-logo" src="<?php echo THEME_DIR; ?>/imgs/puritan-cleaners-logo.svg" width="150px" />					</a>		</div>		<nav class="grid-container-fluid" id="PreNav">			<div class="grid-container hide-for-large"> 				<div class="grid-x align-middle grid-padding-y">					<div class="cell small-12">						<a class="site-logo-link-mobile cell" href="<?php echo esc_url( home_url( '/' ) ); ?>						" title="<?php get_bloginfo('name'); ?>">							<img alt="Puritan Cleaners - Free Home Delivery!" class="mobile-logo" src="<?php echo THEME_DIR; ?>/imgs/puritan-cleaners-logo.svg" width="100px" />						</a>						<button type="button" class="button align-right float-right mobile-burger" data-toggle="offCanvasLeft"><i class="fi fi-list"></i> MENU</button>					</div>				</div>			</div>			<div class="grid-container show-for-large"> 				<div class="grid-x align-middle">					<div class="cell small-12">					  <?php  $args = array(						  'menu_class' => 'menu pre-nav non-mobile float-right',						  'container' => 'ul',						  'menu' => 'Pre Menu'						  ); wp_nav_menu( $args ); ?>					</div>				</div>			 </div>		</nav>		<nav class="grid-container-fluid" id="MainNav">			<div class="grid-container show-for-large"> 				<div class="grid-x">					<div class="cell small-12">					 <?php wp_nav_menu(array(							  'container' => false,							  'menu' => 'Header Menu',							  'menu_class' => 'dropdown menu site-navigation align-right',							  'theme_location' => 'header-menu',							  'items_wrap'      => '<ul id="%1$s" class="%2$s non-mobile" data-dropdown-menu>%3$s</ul>',							  //Recommend setting this to false, but if you need a fallback...							  'fallback_cb' => 'f6_topbar_menu_fallback',							   'walker' => new F6_TOPBAR_MENU_WALKER(),						  ));					 ?>					</div>				</div>			 </div>		</nav>	</header>	<div id="site-content">
