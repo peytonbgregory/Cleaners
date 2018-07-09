@@ -1,0 +1,247 @@
+
+
+// Header
+
+header.site-header {
+	 text-transform: uppercase;
+	  padding-bottom: 3em;
+	position:relative;
+	z-index: 1000;
+	 @include transition(ease 500ms);
+	#PreNav {
+		background: $primary-color;
+		color:$primary-teal;
+		
+	}
+	
+	#MainNav {
+		background: $white;
+		color:$primary-color;
+		border-bottom:2px solid $primary-teal;
+	}
+	
+	.site-logo-link { 
+		height: 0;
+		width: 100%;
+		max-width: 300px;
+		position: absolute;
+		z-index: 1000;
+		top: 1em;
+			img {
+				top: 0; 
+				position: relative;
+				width:10em;
+					max-width: 230px; 
+			
+				
+			} 
+	} 
+   
+
+    @include transition(ease 500ms); 
+   
+    li.menu-item a {
+      	@include transition(ease 500ms);
+		@include breakpoint(small up) {
+			padding-left:0.25em;
+			padding-right:0.25em; 
+		}
+		@include breakpoint(medium) {
+			padding-left:0.5em;
+			padding-right:0.5em;
+		}
+		@media screen and #{breakpoint(40em)} and #{breakpoint(medium)} {
+ 			padding-left:0.35em;
+			padding-right:0.35em; 
+			font-size: 85%;
+		}
+		@include breakpoint(large) {
+			padding-left:1em;
+			padding-right:1em;
+		}
+		&:hover {
+      		color:$primary-teal;
+    	}
+    }
+    .menu.submenu {
+      border:0;
+      li > a {
+      background:$primary-teal;
+      color:$white;
+      &:hover {
+        background:$primary-blue;
+      }
+      }
+    }
+	.pre-nav a {
+		@include transition(ease 500ms);
+		text-transform: uppercase;
+		color:$primary-teal;
+			&:hover {
+				color:$white;
+			}
+		}
+	.non-mobile {
+		@include breakpoint(small only) {
+			display: none !important;
+		}
+	}
+	.mobile-burger {
+		margin:0;
+		@include breakpoint(small only) {
+			display: block !important;
+		}
+	}
+}
+
+// Home page Slideshow & overlay Effects
+
+section#slideshow {
+    margin-top:0;
+    border-top:0;
+    padding-top:0;
+    position: relative;
+	z-index:100;
+	  ul.slides .slider-overlay {
+			  position: absolute;
+			  bottom: -6em;
+			  width: 100%;
+				.puritan-box-wrapper {
+					margin:0px;
+				}
+		}
+		.metaslider .ms-layer {
+			overflow: visible !important;
+		}
+		.metaslider-flex .msHtmlOverlay {
+			overflow: visible !important;
+		}
+
+} // slideshow section
+
+
+
+
+
+
+
+
+
+// Home Page Content
+
+#intro {
+	h1.entry-title {
+		display:none;
+	}
+  h2 {
+    color:$primary-teal;
+    font-weight: 800;
+    font-style: italic;
+	  @include breakpoint(mediun up) {
+		  font-size:3em; 
+	  }
+  }
+}
+
+// Home Page Services
+
+#service-one > div {
+  background:url("../imgs/puritan-cleaners-shirts-lg-sq.jpg") no-repeat;
+
+}
+#service-two > div {
+  background:url("../imgs/puritan-cleaners-bride-lg-sq.jpg") no-repeat; 
+}
+.parallax {
+  transform-origin:bottom;
+  background-size:cover !important;
+}
+
+.puritan-box-wrapper {
+	border:2px solid $white;
+	background:$primary-blue; 
+	padding:0.5em;
+	margin:2em 0 4em;
+	border-radius:20px;
+	color:$white;
+	font-weight: 500;
+	z-index: 100;
+	position: relative;
+	@include transition(ease 500ms);
+		div {
+		border:3px solid $primary-teal;
+		border-radius:15px;
+		padding:1em;
+		font-weight: normal;
+		@include transition(ease 500ms);
+		}
+	&:hover {
+	border-color:$primary-teal;
+	padding:.750em;
+		div {
+		border-color:$white;
+		padding:.750em;
+		}
+	}
+		a {
+			color:$primary-teal;
+			@include transition(ease 500ms);
+			font-weight: bold;
+			font-style: italic;
+			font-size:1.4em;
+				&:hover {
+					color:$white;
+				}
+		}
+		h1 {
+			font-weight: bold;
+			font-style: italic;
+			
+		}
+} // puritan box wrapper
+
+section.divider {
+  border-top:2px solid $primary-teal;
+  border-bottom:2px solid $primary-teal;
+  padding-top:3em;
+  padding-bottom: 3em;
+  margin:2px 0;
+}
+
+
+
+
+
+
+
+
+// Footer Widgets
+#footer-widgets {
+  .site-logo {
+    margin-bottom:1em;
+  }
+  .call-us {
+    line-height: 1em;
+  }
+  line-height: 2em;
+  a {
+    @include transition(ease 500ms);
+    color:$primary-teal;
+    &:hover {
+      color:$primary-blue;
+    }
+  }
+  address {
+    margin-bottom:1em;
+  }
+  ul.menu {
+    padding-top:4px;
+     li {
+      padding: 0px 0px .875em;
+     a {
+    padding:0;
+
+  }
+}
+}
+}
