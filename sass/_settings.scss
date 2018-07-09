@@ -1,5 +1,4 @@
-//  Foundation for Sites Settings
-//  -----------------------------
+
 //
 //  Table of Contents:
 //
@@ -65,24 +64,24 @@
 // 1. Global
 // ---------
 
-$global-font-size: 100%;
+$global-font-size: 110%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #1779ba,
-  secondary: #767676,
-  success: #3adb76,
-  warning: #ffae00,
-  alert: #cc4b37,
+  primary: #364574,
+  secondary: #2fa4ad,
+  success: #2fa4ad,
+  warning: #de572d,
+  alert: #de572d,
 );
-$light-gray: #e6e6e6;
-$medium-gray: #cacaca;
-$dark-gray: #8a8a8a;
-$black: #0a0a0a;
-$white: #fefefe;
+$light-gray: #eeeeee;
+$medium-gray: #686868;
+$dark-gray: #333333;
+$black: #000000;
+$white: #ffffff;
 $body-background: $white;
-$body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-color: $medium-gray;
+$body-font-family: 'Titillium Web', Arial, sans-serif !default;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -133,7 +132,7 @@ $block-grid-max: 8;
 $header-font-family: $body-font-family;
 $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
-$font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
+$font-family-monospace:'Titillium Web', Arial, sans-serif !default;
 $header-color: inherit;
 $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
@@ -224,7 +223,7 @@ $input-error-font-weight: $global-weight-bold;
 
 $accordion-background: $white;
 $accordion-plusminus: true;
-$accordion-title-font-size: rem-calc(12);
+$accordion-title-font-size: rem-calc(16);
 $accordion-item-color: $primary-color;
 $accordion-item-background-hover: $light-gray;
 $accordion-item-padding: 1.25rem 1rem;
@@ -385,11 +384,11 @@ $dropdown-sizes: (
 // 18. Dropdown Menu
 // -----------------
 
-$dropdownmenu-arrows: true;
+$dropdownmenu-arrows: false;
 $dropdownmenu-arrow-color: $anchor-color;
 $dropdownmenu-arrow-size: 6px;
 $dropdownmenu-arrow-padding: 1.5rem;
-$dropdownmenu-min-width: 200px;
+$dropdownmenu-min-width: 250px;
 $dropdownmenu-background: $white;
 $dropdownmenu-submenu-background: $dropdownmenu-background;
 $dropdownmenu-padding: $global-menu-padding;
@@ -866,4 +865,3 @@ $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
 $xy-block-grid-max: 8;
-
