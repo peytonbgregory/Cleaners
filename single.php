@@ -13,5 +13,4 @@ if ( 'video' == get_post_type() ) {
 			get_template_part('includes/content');
 			get_template_part('includes/content-type-flex');
 }
-
 get_footer(); 

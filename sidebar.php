@@ -1,1 +1,3 @@
-<?php if ( is_active_widget('primary') ) : ?>	<div class="cell small-12 medium-4 large-3 auto">		<div id="sidebar-primary" class="sidebar">			<?php dynamic_sidebar( 'primary' ); ?>		</div>	</div><?php endif; ?>
+<div id="sidebar-primary" class="sidebar">
+    <?php dynamic_sidebar( 'primary' ); ?>
+</div>
