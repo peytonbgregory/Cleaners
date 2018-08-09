@@ -1,3 +1,1 @@
-<div id="sidebar-primary" class="sidebar">
-    <?php dynamic_sidebar( 'primary' ); ?>
-</div>
+<?php if(is_active_sidebar('primary')) { ?>	<div class="cell small-12 medium-4 large-3">		<div id="sidebar-primary" class="sidebar">			<?php dynamic_sidebar( 'primary' ); ?>		</div>	</div><?php } ?>

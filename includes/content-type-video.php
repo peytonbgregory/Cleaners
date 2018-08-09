@@ -34,7 +34,7 @@
 				wp_reset_query();
 				global $post;
 				$args = array(
-					'post_type'	=> 'video',
+					'post_type'	=> 'videos',
 					'numberposts' => -1,
 					'posts_per_page' => -1,
 					'tax_query' => array(

@@ -1,16 +1,1 @@
-<?php get_header();
-if ( 'video' == get_post_type() ) {
-            get_template_part('includes/content-type-video');
-} elseif ( 'locations' == get_post_type() ) {
-			// get_template_part('includes/content');
-			get_template_part('includes/content-type-location'); 
-	} elseif ( 'services' == get_post_type() ) {
-			get_template_part('includes/content');
-			get_template_part('includes/content-type-flex'); ?>
-	
-<?php
- } else {
-			get_template_part('includes/content');
-			get_template_part('includes/content-type-flex');
-}
-get_footer(); 
+<?php get_header();if ( 'video' == get_post_type() ) {		get_template_part('includes/content-type-video');	} elseif ( 'locations' == get_post_type() ) {		get_template_part('includes/content-type-location'); 		} else { ?>	<div class="grid-container">		<div class="grid-x grid-margin-x">			<div class="cell small-12 page-heading padding-vertical-1">				<?php the_title('<h1 class="entry-title margin-0">','</h1>'); ?>			</div>			<div class="cell auto">				<?php get_template_part('includes/content');				get_template_part('includes/content-type-flex'); ?>			</div>						<?php get_sidebar(); ?>					</div>	</div>	<?php } get_footer(); ?>
